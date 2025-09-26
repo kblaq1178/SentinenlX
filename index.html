@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SentinelX - Predictive Risk Oracle for DeFi</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for custom colors/font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sx-dark': '#0f172a', // Slate-900 equivalent
+                        'sx-primary': '#4f46e5', // Indigo-600
+                        'sx-accent': '#06b6d4', // Cyan-500
+                        'sx-gradient-start': '#8b5cf6', // Violet-500
+                        'sx-gradient-end': '#2563eb', // Blue-700
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    keyframes: {
+                        'pulse-slow': {
+                            '0%, 100%': { opacity: 1, transform: 'scale(1)' },
+                            '50%': { opacity: 0.8, transform: 'scale(1.02)' },
+                        },
+                        'data-flow': {
+                            '0%': { opacity: 0, transform: 'translateY(10px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        },
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'data-flow-1': 'data-flow 1.5s ease-out 0.2s backwards',
+                        'data-flow-2': 'data-flow 1.5s ease-out 0.4s backwards',
+                        'data-flow-3': 'data-flow 1.5s ease-out 0.6s backwards',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        body {
+            background-color: #0f172a; /* Custom dark background */
+        }
+        
+        /* Utility class for fade-in effect on scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .gradient-text {
+            background-image: linear-gradient(to right, #8b5cf6, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        .hero-background {
+            background: radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+        }
+    </style>
+</head>
+
+<body class="font-sans text-gray-200 antialiased min-h-screen">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-sx-dark/95 backdrop-blur-sm shadow-lg shadow-black/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            
+            <!-- Logo & Brand Name -->
+            <a href="#" class="flex items-center space-x-2">
+                <!-- SVG Placeholder Logo based on the uploaded image -->
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center 
+                    bg-gradient-to-br from-sx-gradient-start to-sx-gradient-end shadow-xl">
+                    <span class="font-black text-xl text-white">S</span>
+                </div>
+                <span class="text-2xl font-extrabold text-white">SentinelX</span>
+            </a>
+
+            <!-- Navigation and CTA -->
+            <nav class="hidden md:flex space-x-8 items-center text-sm font-medium">
+                <a href="#features" class="hover:text-sx-accent transition duration-300">Features</a>
+                <a href="#mechanism" class="hover:text-sx-accent transition duration-300">How It Works</a>
+                <a href="#index" class="hover:text-sx-accent transition duration-300">Fusion Risk Index</a>
+                <a href="https://sentinellx.netlify.app/" target="_blank"
+                    class="ml-4 px-6 py-2 rounded-full font-bold text-sx-dark bg-sx-accent 
+                           hover:bg-cyan-400 transition duration-300 shadow-lg shadow-sx-accent/30 
+                           animate-pulse-slow">
+                    Launch App
+                </a>
+            </nav>
+            
+            <!-- Mobile Menu Placeholder (hidden for simplicity) -->
+            <div class="md:hidden">
+                <button class="text-gray-400 hover:text-white transition duration-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Hero Section -->
+        <section class="relative pt-20 pb-28 text-center overflow-hidden hero-background">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <h1 class="text-5xl sm:text-7xl font-extrabold leading-tight mb-6 fade-in-section">
+                    The <span class="gradient-text">BlockDAG-Powered</span> Predictive Oracle for DeFi Risk
+                </h1>
+                
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10 fade-in-section" style="animation-delay: 0.2s;">
+                    SentinelX provides real-time risk scoring and market intelligence, empowering lenders, insurers, and traders to automate decisions and protect capital.
+                </p>
+                
+                <div class="flex justify-center space-x-4 fade-in-section" style="animation-delay: 0.4s;">
+                    <a href="https://sentinellx.netlify.app/" target="_blank"
+                        class="px-10 py-4 text-lg font-bold rounded-full text-white bg-gradient-to-r 
+                               from-sx-gradient-start to-sx-gradient-end hover:shadow-2xl hover:shadow-sx-primary/50 
+                               transition duration-300 transform hover:scale-105 active:scale-95 animate-pulse-slow">
+                        Launch SentinelX App
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fusion Risk Index (FRI) Callout -->
+        <section id="index" class="py-16 bg-sx-dark/70 border-t border-b border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in-section">
+                <h2 class="text-4xl font-extrabold mb-4 gradient-text">
+                    Introducing the Fusion Risk Index (FRI)
+                </h2>
+                <p class="text-xl text-gray-400 max-w-4xl mx-auto">
+                    The FRI is the singular, trusted metric generated by SentinelX, combining deep on-chain metrics with live off-chain sentiment signals, published in **near real-time via BlockDAG** for instant decision automation.
+                </p>
+            </div>
+        </section>
+
+        <!-- Features / Data Ingestion Section -->
+        <section id="features" class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in-section">
+                    <h2 class="text-4xl font-extrabold text-white mb-3">The Data Fusion Engine</h2>
+                    <p class="text-xl text-gray-400">We ingest two powerful data streams to forge a truly predictive risk score.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    
+                    <!-- On-Chain Financial Metrics -->
+                    <div class="bg-gray-800 p-8 rounded-2xl shadow-2xl fade-in-section animation-data-flow-1">
+                        <div class="text-sx-accent mb-4">
+                            <!-- Icon: Financial Metrics / Chain Link -->
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8A10 10 0 013 12a10 10 0 0110-5zm0 0v8m0-8l-8 8A10 10 0 013 12a10 10 0 0110-5z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">On-Chain Financial Metrics</h3>
+                        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+                            <li>Liquidity Depth: Real-time analysis of available capital.</li>
+                            <li>Collateralization Ratios: Monitoring health of lending protocols.</li>
+                            <li>Liquidation Risk: Proactive flagging of protocol vulnerability.</li>
+                            <li>Wallet Activity & Large Transaction Flows.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Off-Chain Behavioral Signals -->
+                    <div class="bg-gray-800 p-8 rounded-2xl shadow-2xl fade-in-section animation-data-flow-2">
+                        <div class="text-sx-gradient-start mb-4">
+                            <!-- Icon: Sentiment / Social Media -->
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 4v-4z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Off-Chain Behavioral Signals</h3>
+                        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+                            <li>Social Media Sentiment: Real-time mood analysis from major platforms.</li>
+                            <li>News & Media Chatter: Algorithmic news event detection.</li>
+                            <li>Community Health: Identifying key shifts in community discussions.</li>
+                            <li>Developer Commit Activity and Code Audits.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Mechanism / BlockDAG Section -->
+        <section id="mechanism" class="py-24 bg-gray-900/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="md:grid md:grid-cols-2 md:gap-12 items-center">
+                    
+                    <div class="fade-in-section animation-data-flow-3">
+                        <span class="text-sm font-semibold text-sx-accent uppercase tracking-wider">
+                            Near Real-Time Assurance
+                        </span>
+                        <h2 class="text-4xl font-extrabold text-white mt-2 mb-6">
+                            Powered by BlockDAG Architecture
+                        </h2>
+                        <p class="text-lg text-gray-400 mb-6">
+                            SentinelX utilizes a cutting-edge BlockDAG structure to ensure the Fusion Risk Index (FRI) is published and available on-chain with unprecedented speed and finality.
+                        </p>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-sx-accent mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>High Throughput: Massive data streams processed simultaneously.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-sx-accent mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>Near Instant Finality: Risk scores accessible precisely when needed.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-sx-accent mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <span>Automation Ready: Directly feeding smart contracts for automated decisions.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Visual Placeholder for BlockDAG / Data Flow -->
+                    <div class="mt-10 md:mt-0 p-8 rounded-xl bg-gray-800/50 shadow-inner shadow-gray-700">
+                        
+                            <img src="Screenshot_26-9-2025_2321_sentinellx.netlify.app.jpeg" alt="">
+                            <!-- Simple Animated SVG placeholder for data visualization -->
+                            <!-- <svg width="100%" height="100%" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                                <style>
+                                    .node { fill: #8b5cf6; stroke: #2563eb; stroke-width: 2; opacity: 0.8; }
+                                    .link { stroke: #06b6d4; stroke-width: 1; opacity: 0.5; }
+                                    .data-pulse { fill: #06b6d4; animation: pulse-data 2s infinite; }
+                                    @keyframes pulse-data { 
+                                        0% { r: 3; opacity: 0.2; }
+                                        50% { r: 6; opacity: 0.8; }
+                                        100% { r: 3; opacity: 0.2; }
+                                    }
+                                </style> -->
+                                <!-- BlockDAG Links -->
+                                <line class="link" x1="50" y1="50" x2="200" y2="100" />
+                                <line class="link" x1="50" y1="150" x2="200" y2="100" />
+                                <line class="link" x1="200" y1="100" x2="350" y2="50" />
+                                <line class="link" x1="200" y1="100" x2="350" y2="150" />
+                                <!-- Nodes -->
+                                <circle class="node" cx="50" cy="50" r="10" />
+                                <circle class="node" cx="50" cy="150" r="10" />
+                                <circle class="node" cx="200" cy="100" r="12" />
+                                <circle class="node" cx="350" cy="50" r="10" />
+                                <circle class="node" cx="350" cy="150" r="10" />
+                                <!-- Animated Data Flow -->
+                                <circle class="data-pulse" cx="125" cy="75" r="5" />
+                                <circle class="data-pulse" cx="275" cy="75" r="5" style="animation-delay: 0.5s;" />
+                                <circle class="data-pulse" cx="125" cy="125" r="5" style="animation-delay: 1s;" />
+                                <circle class="data-pulse" cx="275" cy="125" r="5" style="animation-delay: 1.5s;" />
+
+                                <text x="200" y="105" text-anchor="middle" fill="#FFFFFF" font-size="10">FRI Published</text>
+                            </svg>
+                        </div>
+                        <p class="mt-4 text-center text-sm text-gray-500">
+                            Visual: BlockDAG architecture for rapid consensus and data publishing.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="py-20 text-center">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 fade-in-section">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+                    Ready to Automate Smarter Risk Management?
+                </h2>
+                <p class="text-xl text-gray-400 mb-8">
+                    Reduce insolvency losses, flag risks early, and optimize your capital allocation today.
+                </p>
+                <a href="https://sentinellx.netlify.app/" target="_blank"
+                    class="px-12 py-5 text-xl font-bold rounded-full text-sx-dark bg-sx-accent 
+                           hover:bg-cyan-400 transition duration-300 shadow-xl shadow-sx-accent/40 
+                           transform hover:scale-105 active:scale-95">
+                    Explore SentinelX Platform
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center text-gray-500 text-sm">
+                &copy; <span id="year"></span> SentinelX. All rights reserved. | BlockDAG Predictive Oracle.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for dynamic year and Scroll Animations -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // ----------------------------------------------------
+        // SCROLL FADE-IN ANIMATION (Intersection Observer)
+        // ----------------------------------------------------
+        const sections = document.querySelectorAll('.fade-in-section');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Stop observing once it's visible
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
